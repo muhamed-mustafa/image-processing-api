@@ -34,7 +34,6 @@ describe('Image transform', () => {
             .query(Object.assign({}, Query))
             .expect(200);
         const existingImage = fs_1.default.existsSync((0, paths_1.thumbPath)(`${Query.filename}-thumb(${Query.width}x${Query.height})`));
-        console.log(existingImage);
         expect(existingImage).toBeDefined();
     }));
     it('Expect transform to throw specific error', () => __awaiter(void 0, void 0, void 0, function* () {

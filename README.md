@@ -36,3 +36,7 @@
 <h2> Formatting code with Prettier </h2>
 
      npm run format
+
+<h2> API endpoint </h2>
+
+     /api/images?filename=fjord&width=200&height=400
