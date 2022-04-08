@@ -20,7 +20,7 @@ const imageController = (req, res) => __awaiter(void 0, void 0, void 0, function
     const { filename, width, height } = req.query;
     const existingImage = fs_1.default.existsSync((0, paths_1.thumbPath)(String(filename)));
     if (existingImage) {
-        res.status(200).sendFile((0, paths_1.thumbPath)(String(filename)));
+        return res.status(200).sendFile((0, paths_1.thumbPath)(String(filename)));
     }
     (0, sharp_1.default)((0, paths_1.fullPath)(String(filename)))
         .resize(Number(width), Number(height))

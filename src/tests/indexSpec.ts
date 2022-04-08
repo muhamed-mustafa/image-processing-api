@@ -24,7 +24,9 @@ describe('Image transform', () => {
       .query({ ...Query })
       .expect(200);
 
-    const existingImage = fs.existsSync(thumbPath(Query.filename));
+    const existingImage = fs.existsSync(
+      thumbPath(`${Query.filename}-thumb(${Query.width}x${Query.height})`)
+    );
 
     expect(existingImage).toBeDefined();
   });
@@ -35,4 +37,12 @@ describe('Image transform', () => {
     expect(res.body).toEqual({ error: 'Input file is missing' });
     expect(res.statusCode).toBe(400);
   });
+});
+
+afterAll(async () => {
+  await fs.promises.rm('./public/assets/images/thumb', {
+    recursive: true,
+  });
+
+  await fs.promises.mkdir('./public/assets/images/thumb');
 });

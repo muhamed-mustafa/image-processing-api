@@ -9,7 +9,7 @@ const imageController = async (req: Request, res: Response): Promise<void> => {
   const existingImage = fs.existsSync(thumbPath(String(filename)));
 
   if (existingImage) {
-    res.status(200).sendFile(thumbPath(String(filename)));
+    return res.status(200).sendFile(thumbPath(String(filename)));
   }
 
   sharp(fullPath(String(filename)))

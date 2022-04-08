@@ -33,7 +33,8 @@ describe('Image transform', () => {
             .get('/api/images')
             .query(Object.assign({}, Query))
             .expect(200);
-        const existingImage = fs_1.default.existsSync((0, paths_1.thumbPath)(Query.filename));
+        const existingImage = fs_1.default.existsSync((0, paths_1.thumbPath)(`${Query.filename}-thumb(${Query.width}x${Query.height})`));
+        console.log(existingImage);
         expect(existingImage).toBeDefined();
     }));
     it('Expect transform to throw specific error', () => __awaiter(void 0, void 0, void 0, function* () {
@@ -42,3 +43,9 @@ describe('Image transform', () => {
         expect(res.statusCode).toBe(400);
     }));
 });
+afterAll(() => __awaiter(void 0, void 0, void 0, function* () {
+    yield fs_1.default.promises.rm('./public/assets/images/thumb', {
+        recursive: true,
+    });
+    yield fs_1.default.promises.mkdir('./public/assets/images/thumb');
+}));
