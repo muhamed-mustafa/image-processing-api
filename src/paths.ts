@@ -1,6 +1,6 @@
 import path from 'path';
 
-export const fullPath = (filename: string) => {
+export const fullPath = (imageName: string) => {
   return path.join(
     __dirname,
     '..',
@@ -8,11 +8,11 @@ export const fullPath = (filename: string) => {
     'assets',
     'images',
     'full',
-    `${filename}.jpg`
+    `${imageName}.jpg`
   );
 };
 
-export const thumbPath = (filename: string) => {
+export const thumbPath = (imageName: string) => {
   return path.join(
     __dirname,
     '..',
@@ -20,6 +20,6 @@ export const thumbPath = (filename: string) => {
     'assets',
     'images',
     'thumb',
-    `${filename}.jpg`
+    `${imageName}`
   );
 };

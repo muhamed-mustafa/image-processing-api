@@ -10,7 +10,6 @@ describe('Test endpoint response', () => {
       .expect(200);
 
     expect(res.body).toBeDefined();
-    expect(res.type).toEqual('text/html');
     expect(res.statusCode).toEqual(200);
   });
 });

@@ -22,7 +22,6 @@ describe('Test endpoint response', () => {
             .get('/api/images?filename=fjord&width=300&height=400')
             .expect(200);
         expect(res.body).toBeDefined();
-        expect(res.type).toEqual('text/html');
         expect(res.statusCode).toEqual(200);
     }));
 });
