@@ -6,7 +6,7 @@ const validationImage = async (
   req: Request,
   res: Response,
   next: NextFunction
-) => {
+): Promise<void> => {
   const { filename, width, height } = req.query;
 
   const existingImage = fs.existsSync(

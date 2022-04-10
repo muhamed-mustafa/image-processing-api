@@ -2,6 +2,7 @@ import request from 'supertest';
 import app from '../index';
 import fs from 'fs';
 import { thumbPath } from '../paths';
+import { resizeImage } from '../controllers/image.controller';
 
 describe('Test endpoint response', () => {
   it('gets the api/images endpoint', async () => {
@@ -28,6 +29,11 @@ describe('Image transform', () => {
     );
 
     expect(existingImage).toBeDefined();
+  });
+
+  it('Resize Image Functionality', async () => {
+    const res = await resizeImage('fjord', 200, 400);
+    expect(res).toBeDefined();
   });
 
   it('Expect transform to throw specific error', async () => {

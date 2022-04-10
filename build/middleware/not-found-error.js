@@ -18,7 +18,7 @@ const paths_1 = require("../paths");
 const notFoundImage = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     const existingImage = fs_1.default.existsSync((0, paths_1.fullPath)(String(req.query.filename)));
     if (!existingImage) {
-        return res
+        res
             .status(404)
             .send({ status: 404, message: 'Image Not Found', success: false });
     }

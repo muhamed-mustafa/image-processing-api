@@ -16,6 +16,7 @@ const supertest_1 = __importDefault(require("supertest"));
 const index_1 = __importDefault(require("../index"));
 const fs_1 = __importDefault(require("fs"));
 const paths_1 = require("../paths");
+const image_controller_1 = require("../controllers/image.controller");
 describe('Test endpoint response', () => {
     it('gets the api/images endpoint', () => __awaiter(void 0, void 0, void 0, function* () {
         const res = yield (0, supertest_1.default)(index_1.default)
@@ -34,6 +35,10 @@ describe('Image transform', () => {
             .expect(200);
         const existingImage = fs_1.default.existsSync((0, paths_1.thumbPath)(`${Query.filename}-thumb(${Query.width}x${Query.height})`));
         expect(existingImage).toBeDefined();
+    }));
+    it('Resize Image Functionality', () => __awaiter(void 0, void 0, void 0, function* () {
+        const res = yield (0, image_controller_1.resizeImage)('fjord', 200, 400);
+        expect(res).toBeDefined();
     }));
     it('Expect transform to throw specific error', () => __awaiter(void 0, void 0, void 0, function* () {
         const res = yield (0, supertest_1.default)(index_1.default).get('/api/images').expect(400);

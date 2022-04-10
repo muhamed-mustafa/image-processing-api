@@ -5,7 +5,7 @@ const thumbDirectory = async (
   req: Request,
   res: Response,
   next: NextFunction
-) => {
+): Promise<void> => {
   const thumbDirExist = fs.existsSync('./public/assets/images/thumb');
 
   if (!thumbDirExist) {
